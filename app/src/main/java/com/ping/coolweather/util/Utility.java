@@ -1,5 +1,6 @@
 package com.ping.coolweather.util;
 
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
@@ -13,6 +14,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Utility {
+
+    //解析和处理服务器返回的省级数据
     public static boolean handleProvinceResponse(String response){
         if (!TextUtils.isEmpty(response)){
             try {
@@ -32,6 +35,7 @@ public class Utility {
         return false;
     }
 
+    //解析和处理服务器返回的市级数据
     public static boolean handleCityResponse(String response, int provinceId){
         if (!TextUtils.isEmpty(response)){
             try {
@@ -52,6 +56,7 @@ public class Utility {
         return false;
     }
 
+    //解析和处理服务器返回的县级数据
     public static boolean handCountyResponse(String response, int cityId){
         if (!TextUtils.isEmpty(response)){
             try {
@@ -72,6 +77,8 @@ public class Utility {
         return false;
     }
 
+    //将返回的JSON数据解析成Weather实体类
+    @Nullable
     public static Weather handleWeatherResponse(String response){
         try {
             JSONObject jsonObject = new JSONObject(response);
